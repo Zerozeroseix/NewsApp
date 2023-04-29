@@ -1,6 +1,23 @@
-<p>
-  <mat-toolbar color="primary">
-    <span>My Application</span>
-  </mat-toolbar>
-</p>
-<h1 class="text-3xl text-red-400 font-bold underline">Hello World!</h1>
+<mat-toolbar class="space-x-2" color="primary">
+  <button mat-icon-button class="pt-2" aria-label="Example icon-button with menu icon">
+    <mat-icon (click)="this.sideNav.open()" *ngIf="!sideNav?.opened">menu</mat-icon>
+    <mat-icon (click)="this.sideNav.close()" *ngIf="sideNav?.opened">close</mat-icon>
+  </button>
+  <span>LP News</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="h-[calc(100vh-65px)]">
+  <mat-sidenav class="w-[280px] border-r-0 text-center" #sidenav="matSidenav">
+    <img class="rounded-[50%] w-28 h-28 mt-2 mb-0 mx-auto mat-elevation-z8"
+      src="https://cdn4.vectorstock.com/i/thumb-large/50/08/news-alerts-breaking-logo-tv-design-element-vector-24575008.jpg"
+      alt="">
+    <h4 class="name">Let's Program</h4>
+    <mat-divider class="my-5 mx-0"></mat-divider>
+
+    <mat-divider class="my-5 mx-0"></mat-divider>
+    <button mat-button class="w-full flex items-center justify-start my-[10px] mx-0 text-base">
+      <mat-icon class="mr-2">settings</mat-icon>
+      <span>Settings</span>
+    </button>
+  </mat-sidenav>
+</mat-sidenav-container>
