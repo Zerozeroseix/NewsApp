@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'NewsApp';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private cd: ChangeDetectorRef) {
+  constructor(private observer: BreakpointObserver, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -20,18 +20,25 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+
     this.sideNav.opened = true;
     this.observer.observe(['(max-width:800px)'])
       .subscribe((res) => {
         if (res?.matches) {
           this.sideNav.mode = "over";
           this.sideNav.close();
+          console.log(this.sideNav.opened)
         } else {
           this.sideNav.mode = 'side';
           this.sideNav.open();
+          console.log(this.sideNav.opened)
         }
       })
-    this.cd.detectChanges();
+    this.cdr.detectChanges();
+  }
+
+  sidenavIsOpen() {
+    return this.sideNav?.opened
   }
 
 
